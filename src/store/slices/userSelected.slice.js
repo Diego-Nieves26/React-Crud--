@@ -18,7 +18,7 @@ export const { setUserSelected } = userSelectedSlice.actions;
 export const editUser = (id, data) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
-    .put(`${API}${id}/`, data)
+    .patch(`${API}${id}/`, data)
     .then(() => dispatch(getUsers()))
     .finally(() => dispatch(setIsLoading(false)));
 };
