@@ -1,38 +1,43 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { IsLoading, UsersForm, UsersList } from "./components";
-import { getUsers } from "./store/slices/users.slice";
-import { setUserDeleted } from "./store/slices/userDeleted.slice";
 import { setUserSelected } from "./store/slices/userSelected.slice";
+import { setUserDeleted } from "./store/slices/userDeleted.slice";
+import { IsLoading, UsersForm, UsersList } from "./components";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "./store/slices/users.slice";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./App.css";
 
 function App() {
+  const userDeleted = useSelector((state) => state.userDeleted);
   const isLoading = useSelector((state) => state.isLoading);
   const users = useSelector((state) => state.users);
-  const userDeleted = useSelector((state) => state.userDeleted);
   const [modalForm, setModalForm] = useState(false);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
   const showAndHideModal = () => {
     setModalForm(!modalForm);
   };
+
   const selectUser = (user) => {
     dispatch(setUserSelected(user));
     setModalForm(!modalForm);
   };
   const deselectUser = () => dispatch(setUserSelected(null));
+
   return (
     <div className="App">
       {isLoading && <IsLoading />}
-      <nav>
-        <h1>Usuarios</h1>
+      <nav className="nav">
+        <h1 className="nav__h1">Usuarios</h1>
         <motion.button
           onClick={showAndHideModal}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
+          className="nav__button"
         >
           <i className="bx bx-plus"></i> Crear nuevo usuario
         </motion.button>
@@ -47,7 +52,7 @@ function App() {
       {userDeleted !== null && (
         <div className="modal">
           <motion.div
-            className="modal-remove"
+            className="modalRemove"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
           >

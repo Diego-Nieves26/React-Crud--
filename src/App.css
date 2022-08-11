@@ -5,26 +5,31 @@
   list-style: none;
   box-sizing: border-box;
 }
+
 body {
   padding: 30px 0;
   background-color: #262626;
 }
+
 .App {
   width: 90%;
   margin: auto;
   max-width: 1000px;
 }
-nav {
+
+.nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-nav h1 {
+
+.nav__h1 {
   font-size: 50px;
   color: #fff;
 }
-nav button {
+
+.nav__button {
   font-size: 1rem;
   background: #be985f;
   color: #fff;
@@ -33,7 +38,8 @@ nav button {
   margin-top: 10px;
   cursor: pointer;
 }
-.user-list {
+
+.userList {
   width: 100%;
   display: grid;
   justify-content: center;
@@ -41,7 +47,8 @@ nav button {
   gap: 30px;
   margin-top: 50px;
 }
-.user-card {
+
+.card {
   width: 360px;
   min-height: 274px;
   border: 1px solid #be985f;
@@ -49,13 +56,15 @@ nav button {
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.15);
 }
-.user-card h2 {
+
+.card__h2 {
   font-size: 25px;
   line-height: 31px;
   text-align: center;
   color: #fff;
 }
-.user-info {
+
+.card__info {
   width: 100%;
   padding: 15px 0;
   border-top: 1px solid #be985f;
@@ -64,20 +73,23 @@ nav button {
   flex-direction: column;
   gap: 10px;
 }
-.user-info h4 {
+
+.card__info--h4 {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #fff;
 }
-.user-info span {
+
+.card__info--span {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: rgba(255, 255, 255, 0.7);
   margin-left: 10px;
 }
-.btn-card {
+
+.card__button {
   border-top: 1px solid #be985f;
   width: 100%;
   padding: 10px 0 0;
@@ -85,23 +97,27 @@ nav button {
   justify-content: flex-end;
   gap: 15px;
 }
-.btn-card button {
+
+.card__button--btn {
   width: 43px;
   height: 43px;
   font-size: 23px;
   border-radius: 4px;
   cursor: pointer;
 }
-.btn-card button:nth-child(1) {
+
+.card__button--btn:nth-child(1) {
   background: #d85d5d;
   color: #fff;
   border: 1px solid #d93f3f;
 }
-.btn-card button:nth-child(2) {
+
+.card__button--btn:nth-child(2) {
   background: #f7f7f7;
   border: 1px solid #bdbdbd;
   color: #bdbdbd;
 }
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -114,7 +130,8 @@ nav button {
   align-items: center;
   z-index: 999;
 }
-.users-form form {
+
+.form {
   width: 90%;
   height: 600px;
   background-color: #000;
@@ -125,23 +142,27 @@ nav button {
   position: relative;
   max-width: 450px;
 }
-.users-form form h2 {
+
+.form__h2 {
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
   color: #fff;
 }
-.users-form form div {
+
+.form__div {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.users-form form div label {
+
+.form__div__label {
   font-size: 16px;
   line-height: 19px;
   color: #be985f;
 }
-.users-form form div input {
+
+.form__div__input {
   width: 100%;
   height: 48px;
   background: #131313;
@@ -150,10 +171,12 @@ nav button {
   outline: none;
   color: #fff;
 }
-.password-input {
+
+.password__container {
   position: relative;
 }
-.modal-remove {
+
+.modalRemove {
   background-color: #e9d5ca;
   width: 370px;
   min-height: 265px;
@@ -163,6 +186,7 @@ nav button {
   gap: 25px;
   position: relative;
 }
+
 .btn-to-accept {
   background: #be985f;
   color: #fff;
@@ -170,6 +194,7 @@ nav button {
   border: none;
   cursor: pointer;
 }
+
 .btn-close {
   position: absolute;
   top: 10px;
@@ -183,6 +208,7 @@ nav button {
   align-items: center;
   cursor: pointer;
 }
+
 .show-and-hide {
   position: absolute;
   top: 10px;
@@ -191,35 +217,44 @@ nav button {
   border: none;
   background: none;
   cursor: pointer;
+  color: #be985f;
 }
+
 @media (max-width: 500px) {
-  nav {
+  .nav {
     flex-direction: column;
   }
-  .user-list {
+
+  .userList {
     grid-template-columns: repeat(1, auto);
   }
 }
+
 @media (min-width: 800px) {
-  nav {
+  .nav {
     flex-direction: row;
   }
-  .user-list {
+
+  .userList {
     grid-template-columns: repeat(2, auto);
   }
 }
+
 @media (min-width: 1100px) {
   ::-webkit-scrollbar {
     width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: #e9d5ca;
   }
+
   ::-webkit-scrollbar-thumb {
     background: #be985f;
     border-radius: 5px;
   }
-  .user-list {
+
+  .userList {
     grid-template-columns: repeat(3, auto);
   }
 }

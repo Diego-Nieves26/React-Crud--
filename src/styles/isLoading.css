@@ -10,12 +10,14 @@
   z-index: 999;
   background: rgba(0, 0, 0, 0.6);
 }
-.lds-dual-ring {
+
+.lds__dual__ring {
   display: inline-block;
   width: 80px;
   height: 80px;
 }
-.lds-dual-ring:after {
+
+.lds__dual__ring:after {
   content: " ";
   display: block;
   width: 64px;
@@ -26,6 +28,7 @@
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);

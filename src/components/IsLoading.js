@@ -1,10 +1,10 @@
-import React from "react";
 import "../styles/isLoading.css";
+import React from "react";
 
 const IsLoading = () => {
   return (
     <div className="overlay">
-      <div className="lds-dual-ring"></div>
+      <div className="lds__dual__ring"></div>
     </div>
   );
 };

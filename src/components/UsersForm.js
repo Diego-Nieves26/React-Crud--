@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useForm } from "react-hook-form";
 import { addUser, editUser } from "../store/slices/userSelected.slice";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 
 const UsersForm = ({ showAndHideModal, deselectUser }) => {
   const userSelected = useSelector((state) => state.userSelected);
-  const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const defaultValues = {
     first_name: "",
@@ -16,6 +16,7 @@ const UsersForm = ({ showAndHideModal, deselectUser }) => {
     password: "",
     birthday: "",
   };
+
   useEffect(() => {
     if (userSelected !== null) {
       reset({
@@ -27,6 +28,7 @@ const UsersForm = ({ showAndHideModal, deselectUser }) => {
       });
     }
   }, [userSelected, reset]);
+
   const submit = (data) => {
     if (userSelected === null) {
       dispatch(addUser(data));
@@ -37,12 +39,14 @@ const UsersForm = ({ showAndHideModal, deselectUser }) => {
     deselectUser();
     reset(defaultValues);
   };
+
   return (
-    <div className="users-form modal">
+    <div className="usersForm modal">
       <motion.form
         onSubmit={handleSubmit(submit)}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
+        className="form"
       >
         <motion.button
           type="button"
@@ -57,36 +61,53 @@ const UsersForm = ({ showAndHideModal, deselectUser }) => {
           <i className="bx bx-x"></i>
         </motion.button>
         {userSelected === null ? (
-          <h2>Nuevo Usuario</h2>
+          <h2 className="form__h2">Nuevo Usuario</h2>
         ) : (
-          <h2>Editar Usuario</h2>
+          <h2 className="form__h2">Editar Usuario</h2>
         )}
-        <div>
-          <label htmlFor="first_name">Nombre</label>
+        <div className="form__div">
+          <label className="form__div__label" htmlFor="first_name">
+            Nombre
+          </label>
           <input
+            className="form__div__input"
             type="text"
             {...register("first_name")}
             id="first_name"
             required
           />
         </div>
-        <div>
-          <label htmlFor="last_name">Apellido</label>
+        <div className="form__div">
+          <label className="form__div__label" htmlFor="last_name">
+            Apellido
+          </label>
           <input
+            className="form__div__input"
             type="text"
             {...register("last_name")}
             id="last_name"
             required
           />
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" {...register("email")} id="email" required />
+        <div className="form__div">
+          <label className="form__div__label" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="form__div__input"
+            type="email"
+            {...register("email")}
+            id="email"
+            required
+          />
         </div>
-        <div>
-          <label htmlFor="password">Contraseña</label>
-          <div className="password-input">
+        <div className="form__div">
+          <label className="form__div__label" htmlFor="password">
+            Contraseña
+          </label>
+          <div className="password__container">
             <input
+              className="form__div__input"
               type={showPassword ? "text" : "password"}
               {...register("password")}
               id="password"
@@ -101,9 +122,12 @@ const UsersForm = ({ showAndHideModal, deselectUser }) => {
             </button>
           </div>
         </div>
-        <div>
-          <label htmlFor="birthday">Fecha de nacimiento</label>
+        <div className="form__div">
+          <label className="form__div__label" htmlFor="birthday">
+            Fecha de nacimiento
+          </label>
           <input
+            className="form__div__input"
             type="date"
             {...register("birthday")}
             id="birthday"
